@@ -1,5 +1,7 @@
-backup
-lib
-backup
+/backup
+/lib
+/backup
 *.res
-
+*.bin
+*.elf
+*.hex
