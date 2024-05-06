@@ -4,9 +4,6 @@ unit pin_isr;
 
 interface
 
-//uses
-//  ;
-
 const
   // PORD B - Definition Aufruf ZWINGEND nach Set_IO (NeoLib) erforderlich,
   // da diese sonst überschrieben wird.

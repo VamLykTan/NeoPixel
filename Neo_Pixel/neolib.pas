@@ -40,8 +40,11 @@ const
 // PORT B
   RS_485_IO                  = 0;
   ShiftOut_NEOPIXEL          = 1;
+  {$ifndef L1x12}
+  // Verwendung wenn Ohne LATCH beim MCU gebaut wird
   _OE_Int_01                 = 2;                                               // OutPut Enabled Line 7 - 12
   _OE_Int_02                 = 3;                                               // OutPut Enabled Line 1 - 06
+  {$endif}
 
 // PORT C
   LED_01                     = 5;                                               // Line 06|12
@@ -51,15 +54,8 @@ const
   LED_05                     = 1;                                               // Line 02|08
   LED_06                     = 0;                                               // Line 01|07
 
-//LED_01                     = 0;                                               // Line 06|12
-//LED_02                     = 1;                                               // Line 05|11
-//LED_03                     = 2;                                               // Line 04|10
-//LED_04                     = 3;                                               // Line 03|09
-//LED_05                     = 4;                                               // Line 02|08
-//LED_06                     = 5;                                               // Line 01|07
-
 // Port D
-  {$if defined (L1x12)}
+  {$ifdef L1x12}
   LED_07                     = 7;                                               // Line 06|12
   LED_08                     = 6;                                               // Line 05|11
   LED_09                     = 5;                                               // Line 04|10
@@ -67,12 +63,6 @@ const
   LED_11                     = 3;                                               // Line 02|08
   LED_12                     = 2;                                               // Line 01|07
 
-//  LED_07                     = 2;                                               // Line 06|12
-//  LED_08                     = 3;                                               // Line 05|11
-//  LED_09                     = 4;                                               // Line 04|10
-//  LED_10                     = 5;                                               // Line 03|09
-//  LED_11                     = 6;                                               // Line 02|08
-//  LED_12                     = 7;                                               // Line 01|07
   {$endif}
   {$endif}
 
@@ -91,7 +81,7 @@ procedure Set_IO;
 
 procedure RgbFill(g, r, b: uint8);                                  overload;
 procedure RgbFill(g, r, b, Line, Value: uint8);                     overload;
-{$if defined (L2x6)}
+{$ifndef L1x12}
 procedure Set_OE_Int(Value: Boolean);
 {$endif}
 
@@ -102,7 +92,7 @@ procedure RgbShiftOut_L04(Value: boolean);
 procedure RgbShiftOut_L05(Value: boolean);
 procedure RgbShiftOut_L06(Value: boolean);
 
-{$if defined (L1x12)}
+{$ifdef L1x12}
 procedure RgbShiftOut_L07;
 procedure RgbShiftOut_L08;
 procedure RgbShiftOut_L09;
@@ -118,7 +108,7 @@ begin
   {$if defined (ATTiny25) or defined (ATTiny85)}
   DDRB                       := DDRB  or (1 shl LED);                           // sbi	23, 2
   PORTB                      := PORTB or (1 shl LED);                           // sbi  24, 2
-  {$elseif defined (ATMega328p)}
+  {$else ifdef ATMega328p}
   // Define & Settings Port B
   DDRB                       := DDRB  or (1 shl RS_485_IO);
   PORTB                      := PORTB or (1 shl ShiftOut_NEOPIXEL)
@@ -136,7 +126,7 @@ begin
                                       or (1 shl LED_03) or (1 shl LED_04)
                                       or (1 shl LED_05) or (1 shl LED_06);
 
-  {$if defined (L1x12)}
+  {$ifdef L1x12}
   DDRD                       := DDRD  or (1 shl LED_07) or (1 shl LED_08)
                                       or (1 shl LED_09) or (1 shl LED_10)
                                       or (1 shl LED_11) or (1 shl LED_12);
@@ -145,7 +135,7 @@ begin
                                       or (1 shl LED_11) or (1 shl LED_12);
   {$endif}
   {$endif}
-  {$if defined (ATMega16p)}
+  {$ifdef ATMega16p}
   DDRA                       := DDRA  or (1 shl LED_01) or (1 shl LED_02)
                                       or (1 shl LED_03) or (1 shl LED_04)
                                       or (1 shl LED_05) or (1 shl LED_06);
@@ -177,72 +167,11 @@ begin
 
 end;
 
-{procedure PixelOut_P_C;
-label
-  PixelLoop, ColorLoop;
-
-var
-  p                          : ^TRGB;
-  Row                        : array [1..6] of TRGB;
-
-  Pixel, RGBLine             : uint8;
-  Data                       : TRGB;
-
-begin
-
-{ Beispiel für ein Array welches auf 6 x 6 Pixel definiert sein kann.
-  Alle Daten gem: des Types "TRGB"!!! wobei die Werte der reihen nach für Grün, Blau, Rot
-  stehen...
-  1: [  4, 0, 0]; [0,   4, 0]; [0, 0,   4]; [  4,   4, 0]; [  4, 0,   4]; [  4,   4,   4];
-  2: [  8, 0, 0]; [0,   8, 0]; [0, 0,   8]; [  8,   8, 0]; [  8, 0,   8]; [  8,   8,   8];
-  3: [ 16, 0, 0]; [0,  16, 0]; [0, 0,  16]; [ 16,  16, 0]; [ 16, 0,  16]; [ 16,  16,  16];
-  4: [ 32, 0, 0]; [0,  32, 0]; [0, 0,  32]; [ 32,  32, 0]; [ 32, 0,  32]; [ 32,  32,  32];
-  5: [ 64, 0, 0]; [0,  64, 0]; [0, 0,  64]; [ 64,  64, 0]; [ 64, 0,  64]; [ 64,  64,  64];
-  6: [128, 0, 0]; [0, 128, 0]; [0, 0, 128]; [128, 128, 0]; [128, 0, 128]; [128, 128, 128];
-}
-  for Pixel := 0 to LED_Count do begin     // Pixel innerhalb der Line
-    for RGBLine := 1 to 6 do begin         // NeoPixel_Line
-      Row[RGBLine]           := RGB_Line[RGBLine, Pixel];
-      end;
-    p                        := @Row;
-    Data                     := p^;
-    asm
-     // X-Register mit der Array Adresse laden
-      ldi r26, lo(Data.Color[0])
-      ldi r27, hi(Data.Color[0])
-      ldi r28, lo(Data.Color[1])
-      ldi r29, hi(Data.Color[1])
-      ldi r30, lo(Data.Color[2])
-      ldi r31, hi(Data.Color[2])
-
-
-      ldi r20,   0           // Register mit Nullbyte initialisieren
-      ldi r21,  63           // Register mit EINSEN initialisieren
-
-//      ldi r22,   8           // Schleife für 8 Bit initialisieren
-      ldi r23,   3           // Schleife für 8 Bit initialisieren
-
-    ColorLoop:
-      ldi r22,   8           // Schleife für 8 Bit initialisieren
-    PixelLoop:
-      OUT PORTC, r21         // 1 Takt  --> A 0
-      LD  r25,   X+          // 2 Takte -->   2
-      OUT PORTC, r25         // 1 Takt  --> B 3
-      NOP                    // 1 Takt  -->   4
-      NOP                    // 1 Takt  -->   5
-      OUT PORTC, r20         // 1 Takt  --> C 6
-    dec r22                  // 1 Takt  -->   7
-    brne PixelLoop;
-    dec r23
-    brne CollorLoop;
-
-    end['r20','r21','r22', 'r23','r25','r26','r27','r28','r29','r30','r31'];
-  end;
-end;     }
-
-{$if defined (L2x6)}
-// Set_OE_Int: False = Low (1-6); True = High = (7-12)
-// Set_OE_Int: Port D (11)
+{$ifndef L1x12}
+{ Set_OE_Int:
+  Value: False = Low = (1-6)
+         True = High = (7-12)
+ Set_OE_Int: Port D (11)}
 procedure Set_OE_Int(Value: boolean);
 begin
   asm
@@ -271,11 +200,11 @@ label
 begin
 //  DezToWS2812(1);
   asm CLI end;
-  {$if defined (L2x6)}
+  {$ifndef L1x12}
   Set_OE_Int(Value);
   if not Value then Line     := 1
   else              Line     := 7;
-  {$elseif defined (L1x12)}
+  {$else ifdef L1x12}
   Line                       := 1;
   {$endif}
   p                          := @Rgb_Line[Line];
@@ -353,11 +282,11 @@ label
   TH, TL, T0L, T1L, Loop;
 begin
   asm CLI end;
-  {$if defined (L2x6)}
+  {$ifndef L1x12}
   Set_OE_Int(Value);
   if not Value then Line     := 2
   else              Line     := 8;
-  {$elseif defined (L1x12)}
+  {$else ifdef L1x12}
   Line                       := 2;
   {$endif}
   p                          := @Rgb_Line[Line];
@@ -403,11 +332,11 @@ label
   TH, TL, T0L, T1L, Loop;
 begin
   asm CLI end;
-  {$if defined (L2x6)}
+  {$ifndef L1x12}
   Set_OE_Int(Value);
   if not Value then Line     := 3
   else              Line     := 9;
-  {$elseif defined (L1x12)}
+  {$else ifdef L1x12}
   Line                       := 3;
   {$endif}
   p                          := @Rgb_Line[Line];
@@ -445,11 +374,11 @@ label
   TH, TL, T0L, T1L, Loop;
 begin
   asm CLI end;
-  {$if defined (L2x6)}
+  {$ifndef L1x12}
   Set_OE_Int(Value);
   if not Value then Line     := 4
   else              Line     := 10;
-  {$elseif defined (L1x12)}
+  {$else ifdef L1x12}
   Line                       := 4;
   {$endif}
   p                          := @Rgb_Line[Line];
@@ -487,11 +416,11 @@ label
   TH, TL, T0L, T1L, Loop;
 begin
   asm CLI end;
-  {$if defined (L2x6)}
+  {$ifndef L1x12}
   Set_OE_Int(Value);
   if not Value then Line     := 5
   else              Line     := 11;
-  {$elseif defined (L1x12)}
+  {$else ifdef L1x12}
   Line                       := 5;
   {$endif}
   p                          := @Rgb_Line[Line];
@@ -529,11 +458,11 @@ label
   TH, TL, T0L, T1L, Loop;
 begin
   asm CLI end;
-  {$if defined (L2x6)}
+  {$ifndef L1x12}
   Set_OE_Int(Value);
   if not Value then Line     := 6
   else              Line     := 12;
-  {$elseif defined (L1x12)}
+  {$else ifdef L1x12}
   Line                       := 6;
   {$endif}
   p                          := @Rgb_Line[Line];
@@ -562,7 +491,7 @@ begin
     asm SEI end;
   end;
 
-{$if defined (L1x12)}
+{$ifdef L1x12}
 // ShiftOut PortD
 procedure RgbShiftOut_L07;
 var
