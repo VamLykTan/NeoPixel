@@ -1,6 +1,5 @@
-/backup
-/lib
-/backup
+*/backup/
+*/lib/
 *.res
 *.bin
 *.elf
