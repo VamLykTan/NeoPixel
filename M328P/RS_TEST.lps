@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="ATMega328P"/>
+    <Units Count="27">
+      <Unit0>
+        <Filename Value="RS_TEST.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <CursorPos Y="14"/>
+        <FoldState Value=" TLjH0}4@"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="../../Programmierung/API/Neo_Pixel/neolib.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="NeoLib"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="157"/>
+        <CursorPos X="107" Y="191"/>
+        <FoldState Value=" T3l20F1 picjF0m2]9bk50e3 pjIkP0W3 PjAjG0_"/>
+        <UsageCount Value="203"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../../Programmierung/Lazarus/ufunction.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="214"/>
+        <CursorPos X="8" Y="238"/>
+        <UsageCount Value="201"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="../../Programmierung/API/EEProm/_eeprom.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="10" Y="3"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="../../Programmierung/Lazarus/uconst.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="217"/>
+        <CursorPos Y="34"/>
+        <UsageCount Value="202"/>
+        <Bookmarks Count="1">
+          <Item0 X="37" Y="103" ID="4"/>
+        </Bookmarks>
+        <Loaded Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="../../Programmierung/API/Timer-Counter/utc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="12"/>
+        <CursorPos X="21" Y="51"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="../../Programmierung/API/ISR/pin_isr.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="3"/>
+        <CursorPos Y="7"/>
+        <UsageCount Value="30"/>
+        <Loaded Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="../../Programmierung/API/UART/uart.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="3" Y="27"/>
+        <FoldState Value=" TLg0a="/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="../../Programmierung/API/UART/uart_2.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="200"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="../../../fpcupdeluxe/fpcsrc/rtl/embedded/avr/atmega328p.pp"/>
+        <UnitName Value="ATmega328P"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="321"/>
+        <CursorPos X="38" Y="349"/>
+        <UsageCount Value="108"/>
+        <Loaded Value="True"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="lib/avr-embedded/neolib.s"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="769"/>
+        <CursorPos Y="769"/>
+        <UsageCount Value="63"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="../AVR25/RS485_Test/RS_485.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="19" Y="9"/>
+        <UsageCount Value="4"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="../ATtiny25/Test.lpr"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="4"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="../../Programmierung/API/UART/rs485.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="171"/>
+        <CursorPos Y="120"/>
+        <UsageCount Value="4"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="../LED_TEST_ws2812/unit1.pas"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit1"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="91"/>
+        <CursorPos X="29" Y="143"/>
+        <UsageCount Value="60"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="../trayform.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="97"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="../../../fpcupdeluxe/Lazarus-IDE/fpc/lib/fpc/3.2.2/units/avr-embedded/avr5/rtl/atmega328.ppu"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="2"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="../../../fpcupdeluxe/Lazarus-IDE/fpcsrc/rtl/embedded/avr/atmega88p.pp"/>
+        <UnitName Value="ATmega88P"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="3"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="../../../fpcupdeluxe/Lazarus-IDE/fpcsrc/rtl/embedded/avr/atmega48p.pp"/>
+        <UnitName Value="ATmega48P"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="208"/>
+        <CursorPos X="3" Y="98"/>
+        <UsageCount Value="12"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="../../../fpcupdeluxe/Lazarus-IDE/fpcsrc/rtl/embedded/avr/atmega16.pp"/>
+        <UnitName Value="ATmega16"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="91"/>
+        <UsageCount Value="11"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="../../../fpcupdeluxe/fpcsrc/rtl/embedded/avr/atmega16.pp"/>
+        <UnitName Value="ATmega16"/>
+        <EditorIndex Value="9"/>
+        <TopLine Value="259"/>
+        <CursorPos X="35" Y="286"/>
+        <UsageCount Value="64"/>
+        <Loaded Value="True"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="../../../fpcupdeluxe/fpcsrc/rtl/objpas/math.pp"/>
+        <UnitName Value="Math"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="15"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="../../../fpcupdeluxe/fpcsrc/rtl/inc/systemh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="270"/>
+        <CursorPos X="3" Y="110"/>
+        <UsageCount Value="9"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="../../../fpcupdeluxe/fpcsrc/rtl/embedded/system.pp"/>
+        <UnitName Value="System"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="272"/>
+        <UsageCount Value="9"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="../../Programmierung/Lazarus/set_data.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="2" Y="8"/>
+        <UsageCount Value="10"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="/run/user/1000/gvfs/smb-share:server=dj-vj-system.local,share=dj-vj-rechner/Mixxx/NOW-PLAYING/mixxx-now-playing-master/mixxx-now-playing.txt"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="Text"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="../../Programmierung/Lazarus/uvar.pas"/>
+        <EditorIndex Value="2"/>
+        <CursorPos Y="15"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit26>
+    </Units>
+    <JumpHistory Count="13" HistoryIndex="12">
+      <Position1>
+        <Filename Value="RS_TEST.lpr"/>
+        <Caret Line="290" Column="21" TopLine="225"/>
+      </Position1>
+      <Position2>
+        <Filename Value="../../Programmierung/Lazarus/uvar.pas"/>
+        <Caret Line="12" Column="6"/>
+      </Position2>
+      <Position3>
+        <Filename Value="../../Programmierung/Lazarus/uvar.pas"/>
+        <Caret Line="11" Column="22"/>
+      </Position3>
+      <Position4>
+        <Filename Value="../../Programmierung/Lazarus/uvar.pas"/>
+        <Caret Line="13"/>
+      </Position4>
+      <Position5>
+        <Filename Value="../../Programmierung/Lazarus/uvar.pas"/>
+        <Caret Line="15"/>
+      </Position5>
+      <Position6>
+        <Filename Value="RS_TEST.lpr"/>
+        <Caret Line="104" TopLine="86"/>
+      </Position6>
+      <Position7>
+        <Filename Value="../../Programmierung/API/EEProm/_eeprom.pas"/>
+        <Caret Line="16" Column="59"/>
+      </Position7>
+      <Position8>
+        <Filename Value="../../Programmierung/API/Neo_Pixel/neolib.pas"/>
+        <Caret Line="201" Column="38" TopLine="173"/>
+      </Position8>
+      <Position9>
+        <Filename Value="../../Programmierung/API/Neo_Pixel/neolib.pas"/>
+        <Caret Line="459" Column="5" TopLine="420"/>
+      </Position9>
+      <Position10>
+        <Filename Value="../../Programmierung/API/Neo_Pixel/neolib.pas"/>
+        <Caret Line="456" Column="80" TopLine="399"/>
+      </Position10>
+      <Position11>
+        <Filename Value="../../Programmierung/API/Neo_Pixel/neolib.pas"/>
+        <Caret Line="413" Column="57" TopLine="392"/>
+      </Position11>
+      <Position12>
+        <Filename Value="../../Programmierung/API/Neo_Pixel/neolib.pas"/>
+        <Caret Column="17"/>
+      </Position12>
+      <Position13>
+        <Filename Value="../../Programmierung/API/Neo_Pixel/neolib.pas"/>
+        <Caret Line="129" Column="17" TopLine="26"/>
+      </Position13>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
